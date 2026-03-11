@@ -1,0 +1,67 @@
+/* templates/base/templateStyles.css*/
+:root{
+  --ink:#1f2430;
+  --muted:#6b7280;
+  --accent:#5b7cff;         /* feel free to override per template */
+  --bg:#ffffff;
+  --h1:20pt;
+  --h2:12pt;
+  --body:10pt;
+  --tight:2mm;
+  --sp:4mm;
+}
+
+/* A4 sheet wrapper (shared by ALL templates) */
+.cv-a4 {
+  box-sizing: border-box;
+  width: 210mm;          /* exact A4 width on screen */
+  max-width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 0;            /* each template can add its own inner padding */
+  background: #ffffff;
+  position: relative;
+}
+
+/* Auckland can still customize padding & look */
+.cv-a4.akl-page {
+  padding: 10mm 14mm 14mm;   /* inner margins for this template */
+}
+
+/* ===== PRINT LAYOUT – make CV fill the page and stay on a single sheet ===== */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  #root,
+  body > div {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .cv-a4 {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    min-height: auto;   /* important: don’t force extra height */
+    box-shadow: none;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+

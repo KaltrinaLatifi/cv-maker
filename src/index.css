@@ -1,0 +1,11 @@
+.cv-template-page .template-card {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cv-template-page .template-card img {
+  height: 300px;
+  object-fit: cover;
+}

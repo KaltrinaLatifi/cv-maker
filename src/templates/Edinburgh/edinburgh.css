@@ -1,0 +1,345 @@
+/* ================== BASE PAGE ================== */
+.ed-page {
+  --ribbon: #3d4364;
+  --muted: #6b7280;
+  --ribbon-dark: #2f3454;
+
+  box-sizing: border-box;
+  color: #111827;
+
+  /* ✅ SAME AS AUCKLAND: this is the real fix for print/PDF scaling */
+  font: 10pt/1.35 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  background: #ffffff;
+  margin-top: 2mm;
+}
+
+.ed-page *::before,
+.ed-page *::after {
+  box-sizing: inherit;
+}
+
+/* whole page layout */
+.ed-layout {
+  display: grid;
+  grid-template-columns: 38% 62%;
+  min-height: 180mm;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.ed-header-sub {
+  margin-top: 6px;
+  font-size: 10pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  position: relative;
+  z-index: 2;
+  line-height: 1.2;
+}
+
+/* ================== LEFT SIDEBAR ================== */
+
+.ed-sidebar {
+  background: #f3f4f6;
+  position: relative;
+  border-radius: 8px 0 0 8px;
+  overflow: hidden;
+  border-right: 2px solid #d1d5db;
+}
+
+/* Top header */
+.ed-sidebar-header {
+  background: var(--ribbon);
+  color: #ffffff;
+  padding: 12mm 10mm 10mm;
+  position: relative;
+  text-align: center;
+  border-radius: 8px 8px 40% 40%;
+  overflow: hidden;
+}
+
+.ed-sidebar-header::after {
+  content: "";
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  bottom: -18mm;
+  height: 32mm;
+  background: var(--ribbon);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* Name text */
+.ed-name {
+  margin: 0;
+  font-size: 18pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+.ed-sidebar-body {
+  padding: 22mm 10mm 10mm;
+  font-size: 9pt;
+}
+
+.ed-side-section {
+  margin-bottom: 10mm;
+}
+
+.ed-side-title {
+  margin: 0 0 4mm 0;
+  font-size: 9pt;
+  font-weight: 700;
+  color: #111827 !important; /* ✅ make blue titles black */
+}
+
+/* ================== CONTACT LIST + ICONS ================== */
+
+.ed-side-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ed-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 4mm;
+  margin-bottom: 3mm;
+  text-align: left;
+}
+
+.ed-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ed-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--ribbon);
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.ed-contact-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ed-contact-label {
+  font-weight: 600;
+  font-size: 9pt;
+}
+
+.ed-contact-value {
+  font-size: 8.5pt;
+  color: var(--muted);
+}
+
+/* ================== INTERESTS ================== */
+
+.ed-interests-list li {
+  display: flex;
+  gap: 3mm;
+  align-items: center;
+  margin-bottom: 2mm;
+}
+
+.ed-interest-dot {
+  width: 3px;
+  height: 3px;
+  background: var(--ribbon);
+  flex-shrink: 0;
+}
+
+.ed-interest-text {
+  font-size: 9pt;
+}
+
+/* ================== RIGHT SIDE ================== */
+
+.ed-main {
+  padding: 16mm 18mm 14mm 6mm;
+  font-size: 9pt;
+  text-align: left;
+}
+
+.ed-main p,
+.ed-main h2,
+.ed-main h3 {
+  text-align: left;
+}
+
+/* Items */
+.ed-item {
+  margin-bottom: 5mm;
+}
+
+.ed-item-head {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+}
+
+.ed-role {
+  font-weight: 600;
+}
+
+.ed-company {
+  color: var(--muted);
+}
+
+.ed-dates {
+  margin-left: auto;
+  font-size: 8.5pt;
+  color: var(--muted);
+}
+
+.ed-summary {
+  margin: 1.5mm 0 0 0;
+  font-size: 9.5pt;
+}
+
+.ed-highlights {
+  margin: 2mm 0 0 4mm;
+  padding-left: 4mm;
+  font-size: 9pt;
+}
+
+/* Skills dots */
+.ed-skills {
+  display: grid;
+  gap: 2mm;
+  font-size: 9pt;
+}
+
+.ed-skill-row {
+  display: flex;
+  align-items: center;
+}
+
+.ed-skill-name {
+  margin-right: auto;
+}
+
+.ed-skill-dots {
+  display: flex;
+  gap: 2mm;
+}
+
+.ed-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e5e7eb;
+}
+
+.ed-dot-on {
+  background: var(--ribbon);
+}
+
+/* ✅ Your preferred section title style (preview) */
+.ed-main h2,
+.ed-main h3,
+.ed-main .section-title,
+.ed-main .ed-section-title {
+  font-size: 11pt;
+  letter-spacing: 0;
+  color: #111111;
+  margin: 0 0 5mm 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Photo */
+.ed-photo-wrap {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  margin-top: -30px;
+  margin-bottom: 14px;
+}
+
+.ed-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #f2f2f2;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+/* ================== PRINT STYLES ================== */
+@media print {
+  @page {
+    size: A4;
+    margin: 8mm;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
+  }
+
+  .ed-page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    box-shadow: none !important;
+    background: #ffffff !important;
+
+    /* ✅ lock the same base font in print too */
+    font: 10pt/1.35 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  .ed-layout {
+    display: grid !important;
+    grid-template-columns: 38% 62% !important;
+  }
+
+  /* ✅ ensure name stays exactly like preview */
+  .ed-name {
+    font-size: 18pt !important;
+    letter-spacing: 0.18em !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+  }
+
+  /* ✅ FORCE ONLY RIGHT-SIDE SECTION TITLES (prevents sidebar weird spacing) */
+  .ed-main .cv-row > div:first-child h2,
+  .ed-main .cv-row > div:first-child h3 {
+    font-size: 11pt !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    text-transform: uppercase !important;
+    margin: 0 0 5mm 0 !important;
+    color: #111111 !important;
+  }
+
+  .ed-sidebar,
+  .ed-sidebar-header,
+  .ed-icon svg,
+  .ed-interest-dot,
+  .ed-dot-on {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .ed-icon svg {
+    stroke: var(--ribbon) !important;
+    fill: none !important;
+  }
+}

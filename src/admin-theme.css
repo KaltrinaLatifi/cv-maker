@@ -1,0 +1,665 @@
+/* Admin theme (make Bootstrap dashboard look modern) */
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+  --shadow-sm: 0 8px 18px rgba(17, 24, 39, 0.08);
+  --radius: 16px;
+}
+
+/* main background */
+.admin-main,
+main {
+  background: var(--bg) !important;
+}
+
+/* Title like screenshot 2 */
+h1.mt-4 {
+  font-size: 54px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  margin-top: 12px !important;
+  margin-bottom: 10px;
+}
+
+/* breadcrumb text */
+.breadcrumb {
+  background: transparent;
+  margin-bottom: 16px !important;
+}
+.breadcrumb .breadcrumb-item.active {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* ====== Stat cards (override bootstrap colored cards) ====== */
+.card.text-white.mb-4 {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-sm);
+  height: 150px; /* consistent height like screenshot 2 */
+  overflow: hidden;
+}
+
+/* inside card */
+.card .card-body {
+  padding: 22px !important;
+}
+
+/* label + number style */
+.card .card-body h5 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.card .card-body h3 {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text);
+}
+
+/* icon style (blue icon) */
+.card .card-body i {
+  color: #2563eb !important;
+  opacity: 0.95;
+  font-size: 34px;
+}
+
+/* ====== Chart container card ====== */
+.chart-card,
+.card.mb-4:not(.text-white) {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--card);
+}
+
+/* ========= ADMIN: full viewport, NO browser scroll (CSS only) ========= 
+html,
+body,
+#root {
+  height: 100%;
+}
+
+ Apply ONLY when the DashboardLayout is on screen (so homepage can still scroll) 
+body:has(#root > .d-flex.flex-column > .d-flex.flex-grow-1) {
+  overflow: hidden;  removes the browser scrollbar 
+}*/
+
+/* Admin: mos lejo browser scroll, por lejo scroll brenda .admin-main */
+body.is-admin {
+  overflow: hidden;
+}
+
+body.is-admin #root {
+  height: 100vh;
+}
+
+body.is-admin .admin-main {
+  overflow: auto;
+  min-height: 0;
+}
+
+/* The DashboardLayout root (your <div className="d-flex flex-column" style={{minHeight:"100vh"}}>) */
+#root > .d-flex.flex-column {
+  height: 100vh; /* force full viewport */
+  min-height: 100vh; /* keep your inline minHeight behavior */
+}
+
+/* The row that contains Sidebar + Main */
+#root > .d-flex.flex-column > .d-flex.flex-grow-1 {
+  min-height: 0; /* CRITICAL: prevents page overflow */
+}
+
+/* Admin main area: keep scroll if needed BUT hide the scrollbar/slider */
+#root > .d-flex.flex-column > .d-flex.flex-grow-1 > main.flex-grow-1 {
+  min-height: 0;
+  overflow-y: auto;
+
+  /* Hide scrollbar (Firefox + old Edge) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar (Chrome/Safari) */
+#root > .d-flex.flex-column > .d-flex.flex-grow-1 > main.flex-grow-1::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+
+/* =========================
+   MANAGE USERS – CARD STYLE
+   ========================= */
+
+.admin-card {
+  width: min(1100px, 100%);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+
+  /* blue dashboard-style shadow */
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.18),
+    0 4px 10px rgba(37, 99, 235, 0.08);
+
+  border: 1px solid #e5e7eb;
+}
+
+/* =========================
+   TABLE BASE STYLE
+   ========================= */
+
+.admin-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Header */
+.admin-table thead th {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #111827;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 14px;
+}
+
+/* =========================
+   ID COLUMN – BLUE + WHITE
+   ========================= */
+
+/* Header ID */
+.admin-table thead th:first-child {
+  background: #1e40af;
+  color: #ffffff;
+  text-align: center;
+  border-top-left-radius: 10px;
+}
+
+/* Body ID cells */
+.admin-table tbody td:first-child {
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* =========================
+   TABLE ROWS
+   ========================= */
+
+.admin-table tbody td {
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+
+/* Row hover (soft, professional) */
+.admin-table tbody tr:hover {
+  background: #f1f5ff;
+}
+
+/* =========================
+   FIX MANAGE USERS POSITION
+   ========================= */
+
+/* Center the Manage Users card */
+.admin-page {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: flex-start; /* keep it at top */
+  padding: 24px;
+}
+
+/* =========================
+   FIX ID COLUMN TEXT COLOR
+   ========================= */
+
+/* Make ID numbers white */
+.admin-table tbody td:first-child {
+  background: #2563eb;
+  color: #ffffff !important; /* FORCE white text */
+  font-weight: 600;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* Header ID cell */
+.admin-table thead th:first-child {
+  background: #1e40af;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* nicer delete button (optional but recommended) */
+.admin-danger {
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 600;
+}
+
+/* ===============================
+   FIX "CREATED AT" LINE WRAPPING
+   =============================== */
+
+/* Keep date + PM on ONE line */
+.admin-table th:last-child,
+.admin-table td:last-child {
+  white-space: nowrap;
+  width: 220px; /* enough space so PM does not wrap */
+}
+
+.managecv-card {
+  width: 720px; /* ⬅️ smaller */
+  padding: 28px 32px; /* ⬅️ less padding */
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+
+  /* softer blue shadow */
+  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.16),
+    0 6px 12px rgba(37, 99, 235, 0.08);
+}
+
+/* ======================================
+   MANAGE CV TEMPLATES – FINAL STYLED
+   ====================================== */
+
+/* Page wrapper */
+.app-background {
+  background: #ffffff !important;
+  min-height: calc(100vh - 64px); /* full height under navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* ❌ no scroll */
+}
+
+/* Main card */
+.managecv-card {
+  width: 720px; /* balanced size */
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  border: 1px solid #e5e7eb;
+
+  /* soft blue dashboard shadow */
+  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.16),
+    0 6px 12px rgba(37, 99, 235, 0.08);
+}
+
+/* Title */
+.managecv-card h2 {
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Buttons container */
+.managecv-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* Primary button */
+.managecv-actions .btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.managecv-actions .btn-primary:hover {
+  background: #1d4ed8;
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+}
+
+/* Secondary button */
+.managecv-actions .btn-secondary {
+  background: #f8fafc;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.managecv-actions .btn-secondary:hover {
+  background: #f1f5f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Real admin layout: NO browser scroll ===== */
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.admin-shell {
+  height: 100vh;
+}
+.admin-body {
+  min-height: 0;
+} /* critical */
+.admin-main {
+  min-height: 0;
+  overflow: auto;
+} /* scroll only inside main if needed */
+
+/* ======================================
+   MANAGE TEMPLATES – BACKGROUND IMAGE
+   ====================================== */
+
+.app-background {
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Background PNG layer */
+.app-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/assets/img/background-admin.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 520px; /* adjust size if needed */
+
+  opacity: 0.06; /* subtle visibility */
+  pointer-events: none;
+}
+
+/* Keep card above background */
+.managecv-card {
+  position: relative;
+  z-index: 1;
+}
+/* ===============================
+   CREATE TEMPLATE (Add New Template)
+   =============================== */
+
+.create-template-page {
+  /* clean page like other admin pages */
+  background: #f5f7fb;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 28px;
+}
+
+/* the white card */
+.create-template-card {
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 34px 34px 28px;
+  border: 1px solid #e9eef6;
+
+  /* blue-ish shadow like dashboard */
+  box-shadow: 0 18px 40px rgba(13, 110, 253, 0.12),
+    0 2px 10px rgba(16, 24, 40, 0.06);
+}
+
+/* title – less “heavy” */
+.create-template-card h2 {
+  margin: 0 0 18px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #0f172a;
+}
+
+/* spacing between fields */
+.create-template-card .form-group {
+  margin-top: 16px;
+}
+
+/* labels */
+.create-template-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* inputs */
+.create-template-card .form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #dbe3ef;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* focus blue ring */
+.create-template-card .form-input:focus {
+  border-color: #2f6fed;
+  box-shadow: 0 0 0 4px rgba(47, 111, 237, 0.15);
+}
+
+/* textarea nicer */
+.create-template-card textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* file input: keep it clean */
+.create-template-card input[type="file"].form-input {
+  padding: 10px 12px;
+  background: #f8fafc;
+}
+
+/* submit button */
+.create-template-card .managecv-btn {
+  width: 100%;
+  margin-top: 22px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  background: #2f6fed;
+  box-shadow: 0 14px 28px rgba(47, 111, 237, 0.22);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.create-template-card .managecv-btn:hover {
+  background: #245fe0;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(47, 111, 237, 0.26);
+}
+
+.create-template-card .managecv-btn:active {
+  transform: translateY(0);
+}
+
+/* keep createdAt in one line (mos me ra PM posht) */
+.admin-date {
+  white-space: nowrap;
+}
+
+/* Read more link style */
+.admin-readmore {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Modal */
+.admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 9999;
+}
+
+.admin-modal {
+  width: min(720px, 96vw);
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 18px 55px rgba(0, 86, 255, 0.22);
+  overflow: hidden;
+}
+
+/* header / footer fixed, body scrolls */
+.admin-modal-header {
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #eef2ff;
+}
+
+.admin-modal-title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.admin-modal-meta {
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.admin-dot {
+  margin: 0 8px;
+  color: #94a3b8;
+}
+
+.admin-modal-body {
+  padding: 16px 18px;
+  max-height: 280px; /* <-- ky e mban popup te vogel */
+  overflow: auto; /* <-- scroll VETEM brenda mesazhit */
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.admin-modal-footer {
+  padding: 14px 18px;
+  border-top: 1px solid #eef2ff;
+  display: flex;
+  justify-content: flex-end;
+}
+/*per request template*/
+.form-success-msg {
+  background: #e8f7ee;
+  color: #146c43;
+  border: 1px solid #b7ebcd;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  margin: 12px 0;
+}
+
+.form-error-msg {
+  background: #fdecec;
+  color: #b02a37;
+  border: 1px solid #f5c2c7;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  margin: 12px 0;
+}
+/* =========================
+   ADMIN DASHBOARD MOBILE
+   ========================= */
+
+@media (max-width: 992px) {
+  .row > .col-xl-3,
+  .row > .col-md-6 {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .card.text-white.mb-4 {
+    height: auto; /* remove fixed height */
+  }
+
+  h1.mt-4 {
+    font-size: 32px;
+  }
+}
+@media (max-width: 768px) {
+  .chart-card,
+  .card.mb-4 {
+    overflow-x: auto;
+  }
+}
+/* =========================
+   ADMIN RESPONSIVE LAYOUT
+   ========================= */
+
+.admin-shell {
+  height: 100vh;
+}
+
+.admin-body {
+  min-height: 0;
+}
+
+/* SIDEBAR BASE */
+.admin-sidebar {
+  width: 260px;
+  background: #212529;
+}
+
+/* MOBILE */
+@media (max-width: 992px) {
+  .admin-sidebar {
+    position: fixed;
+    top: 56px; /* navbar height */
+    left: -260px;
+    height: calc(100vh - 56px);
+    transition: left 0.3s ease;
+    z-index: 1200;
+  }
+
+  .admin-sidebar.open {
+    left: 0;
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1100;
+  }
+}

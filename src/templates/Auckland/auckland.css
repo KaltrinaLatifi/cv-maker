@@ -1,0 +1,265 @@
+/* ===== PAGE BASE ===== */
+.akl-page {
+  --rail: #f3f5f9;
+  --rail-border: #dde0e6;
+  --ink: #1f2430;
+  --muted: #6b7280;
+  --accent: #111111;
+
+  box-sizing: border-box;
+  color: var(--ink);
+  font: 10pt/1.35 "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    Arial, sans-serif;
+  background: #ffffff;
+  padding: 0 !important;
+  margin: 0 auto;
+}
+
+.akl-page {
+  width: 210mm !important;
+  min-height: 297mm !important;
+  max-height: 297mm !important;
+  page-break-inside: avoid;
+  margin: 0 auto !important;
+}
+.akl-page *::before,
+.akl-page *::after {
+  box-sizing: inherit;
+}
+
+/* ===== NAME RIBBON ===== */
+.akl-header {
+  display: flex;
+  justify-content: center;
+  margin: 4mm 0 4mm 0; /* smaller top margin so ribbon is higher */
+  position: relative;
+  z-index: 2;
+}
+
+.akl-name-box {
+  width: 90%;
+  max-width: 175mm;
+  border: 2px solid var(--accent);
+  padding: 7mm 10mm;
+  text-align: center;
+  background: #ffffff;
+}
+
+.akl-name {
+  margin: 0;
+  font-size: 18pt;
+  font-weight: 500;
+  letter-spacing: 0.27em;
+  text-transform: uppercase;
+}
+
+/* ===== TWO-COLUMN LAYOUT ===== */
+.akl-layout {
+  display: grid;
+  grid-template-columns: 32% 68%;  /* same proportions as Edinburgh-style */
+  margin-top: -30mm;               /* tuck rail up under the name box */
+}
+
+
+/* ===== LEFT RAIL ===== */
+.akl-rail {
+  background: var(--rail);
+  border-right: 1px solid var(--rail-border);
+  padding: 32mm 8mm 18mm 6mm;  /* top aligns with name box, inner padding */
+  text-align: left;
+}
+
+.akl-block + .akl-block {
+  margin-top: 10mm;
+}
+
+.akl-rail-title {
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 9pt;
+  margin-bottom: 4mm;
+}
+
+/* PERSONAL */
+.akl-personal {
+  font-size: 9pt;
+}
+
+.akl-personal .akl-field + .akl-field {
+  margin-top: 2mm;
+}
+
+.akl-personal .akl-label {
+  font-weight: 700;
+  color: #6b7280;
+}
+
+.akl-personal .akl-value {
+  margin: 0;
+  padding-left: 0;
+  font-size: 9pt;
+}
+
+.akl-interests {
+  margin: 0;
+  padding-left: 4mm;
+  list-style: disc;
+  font-size: 9pt;
+}
+
+/* ===== RIGHT COLUMN ===== */
+.akl-content {
+  position: relative;
+  padding: 25mm 10mm 18mm 10mm; /* symmetric inner padding */
+  width: 100%;
+}
+
+.akl-content::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--rail-border);
+}
+.akl-summary--left {
+  text-align: left !important;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.akl-content h2,
+.akl-content h3,
+.akl-content .section-title,
+.akl-content .akl-section-title {
+  font-size: 11pt;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin: 0 0 5mm 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ===== ITEMS ===== */
+.akl-item {
+  margin: 3.5mm 0 4.5mm 0;
+}
+
+.akl-item-header {
+  display: flex;
+  align-items: baseline;
+  gap: 4mm;
+}
+
+.akl-role {
+  font-weight: 600;
+}
+
+.akl-company {
+  color: var(--muted);
+}
+
+.akl-dates {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 8.5pt;
+}
+
+.akl-summary {
+  margin: 1.5mm 0 0 0;
+  font-size: 9.5pt;
+}
+
+.akl-highlights {
+  margin: 2mm 0 0 4mm;
+  padding-left: 3mm;
+  font-size: 9pt;
+}
+
+.akl-hr {
+  border-top: 1px solid #e6e8ec;
+  margin-top: 3mm;
+}
+
+/* ===== SKILLS ===== */
+.akl-skills {
+  display: grid;
+  gap: 2mm;
+  margin-top: 1mm;
+}
+
+.akl-skill-row {
+  display: flex;
+  align-items: center;
+}
+
+.akl-skill-name {
+  margin-right: auto;
+}
+
+.akl-dots {
+  display: flex;
+  gap: 2mm;
+}
+
+.akl-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  display: inline-block;
+  background: #d4d7dd;
+}
+
+.akl-dot-on { 
+  background: var(--accent); 
+}
+
+
+
+/* ===== PRINT ===== */
+@media print {
+  @page {
+    size: A4;
+    margin: 8mm;              /* same idea as Edinburgh */
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
+  }
+
+  .akl-page {
+    width: 210mm;
+    min-height: 297mm;
+    max-height: none;
+    box-shadow: none !important;
+  }
+
+  /* force backgrounds & accents to actually print */
+  .akl-rail,
+  .akl-name-box,
+  .akl-dot-on {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .akl-content h1,
+  .akl-content h2,
+  .akl-content h3,
+  .akl-content .section-title,
+  .akl-content .akl-section-title {
+    font-size: 11pt !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.2em !important;
+    font-weight: 700 !important;
+  }
+
+  /* Optional: rail titles also stable */
+  .akl-rail-title {
+    font-size: 9pt !important;
+    letter-spacing: 0.18em !important;
+  }
+}

@@ -1,0 +1,284 @@
+/* src/templates/Oxford/oxford.css */
+
+.ox2-page{
+  --accent: #111111;
+  --rail: #f2f3f7;
+  --border: #dde0e6;
+  --text: #111827;
+  --muted: #6b7280;
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #fff;
+}
+
+/* Layout */
+.ox2-wrap{
+  display: grid;
+  grid-template-columns: 18mm 1fr; /* left ribbon + content */
+  min-height: 100%;
+  background: #fff;
+}
+
+/* Left vertical ribbon */
+.ox2-sidebar{
+  background: var(--accent);
+}
+
+/* Content area */
+.ox2-main{
+  padding: 12mm 14mm 14mm 14mm;
+  box-sizing: border-box;
+  --ox-right: 60mm; /* right column width (dates / dots) */
+}
+
+/* HEADER */
+.ox2-top{
+  display: flex;
+  align-items: center;
+  margin-bottom: 6mm;
+}
+
+.ox2-topLeft{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ox2-photoWrap{
+  width: 70px;
+  height: 70px;
+  border-radius: 999px;
+  overflow: hidden;
+  flex: 0 0 auto;
+  border: 2px solid #e5e7eb;
+}
+
+.ox2-photo{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ox2-topTitle{
+  font-size: 20pt;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* BLOCK HEADERS (Personal / Objective etc.) */
+.ox2-block{
+  margin-top: 2mm;
+  margin-bottom: 8mm;
+}
+
+.ox2-h2{
+  margin: 0;
+  font-size: 11pt;
+  font-weight: 700;
+  text-transform: none;
+  color: #111827;
+  text-align: left;
+}
+
+.ox2-h2--strong{
+  font-size: 11pt;
+  font-weight: 700;
+  color: #111827;
+}
+
+.ox2-rule{
+  height: 1px;
+  background: var(--border);
+  margin: 3mm 0 4mm;
+}
+
+.ox2-rule--section{
+  margin: 3mm 0 4mm;
+}
+
+/* PERSONAL GRID: label | spacer | right-column(value) */
+.ox2-personalGrid{
+  display: grid;
+  grid-template-columns: 38mm 1fr var(--ox-right);
+  column-gap: 12mm;
+  row-gap: 2.5mm;
+  font-size: 9.5pt;
+  align-items: start;
+}
+
+.ox2-label{
+  grid-column: 1;
+  color: #111827;
+  text-align: left;
+}
+
+.ox2-value{
+  grid-column: 3;               /* values aligned to the right column */
+  color: #111827;
+  text-align: left;
+  word-break: break-word;
+}
+
+/* TIMELINE ITEMS: dot/line | content | right column */
+.ox2-tlItem{
+  display: grid;
+  grid-template-columns: 8mm 1fr var(--ox-right);
+  column-gap: 4mm;              /* ✅ tighter so Programmer/BSc sits closer to dot */
+  align-items: start;
+  margin: 3mm 0 6mm;
+}
+
+/* Left marker column */
+.ox2-tlLeft{
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.ox2-dot{
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  margin-top: 2mm;
+}
+
+.ox2-line{
+  position: absolute;
+  top: 6mm;
+  bottom: -6mm;
+  width: 1px;
+  background: #cbd5e1;
+}
+
+/* Content column */
+.ox2-tlContent{
+  min-width: 0;
+  text-align: left;            /* ✅ no centering */
+}
+
+.ox2-role{
+  font-weight: 700;
+  font-size: 10pt;
+  text-align: left;
+  margin: 0;
+}
+
+.ox2-subtle{
+  margin-top: 1mm;
+  font-size: 9pt;
+  color: #374151;
+  font-style: italic;
+  text-align: left;
+}
+
+.ox2-text{
+  margin-top: 2mm;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.ox2-text--left{
+  text-align: left !important;
+}
+
+/* Right column (dates / skill dots) */
+.ox2-rightCol{
+  font-size: 9pt;
+  color: #111827;
+  white-space: nowrap;
+  text-align: left;
+}
+
+/* Skills dots (right column) */
+.ox2-dots{
+  display: flex;
+  gap: 2mm;
+  justify-content: flex-start;
+}
+
+.ox2-dotSkill{
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.ox2-dotSkillOn{
+  background: var(--accent);
+}
+
+/* Skills: shorter line */
+.ox2-tlItem--skill{
+  margin: 2mm 0 4mm;
+  align-items: center;
+}
+
+.ox2-tlItem--skill .ox2-line{
+  top: 6mm;
+  height: 3mm;
+  bottom: auto;
+}
+
+/* Interests */
+.ox2-tlItem--interest{
+  align-items: start;
+  margin: 2mm 0 4mm;
+}
+
+.ox2-interestText{
+  font-size: 9.5pt;
+  color: #111827;
+  line-height: 1.35;
+  margin: 0;
+  text-align: left;
+}
+
+.ox2-rightCol--empty{
+  min-height: 1px;
+}
+
+.ox2-line--stop{
+  bottom: auto;
+  height: 0;
+}
+
+/* Make Section headers from base atoms NOT huge and not centered */
+.cv-row > div:first-child h2{
+  font-size: 11pt;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  text-align: left;
+}
+
+/* PRINT */
+@media print{
+  @page{
+    size: A4;
+    margin: 0;
+  }
+
+  html, body{
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  /* ✅ Prevent giant titles in PDF */
+  .ox2-main h2,
+  .ox2-h2,
+  .cv-row > div:first-child h2{
+    font-size: 11pt !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    text-transform: none !important;
+  }
+
+  .ox2-topTitle{
+    font-size: 20pt !important;
+    line-height: 1.15 !important;
+  }
+}

@@ -1,0 +1,273 @@
+/* src/templates/Princeton/princeton.css */
+
+@media print {
+  .pr2-page {
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+.pr2-page {
+  color: var(--text);
+  background: #fff;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 14mm 16mm;
+  box-sizing: border-box;
+   --rule: #9ca3af; 
+}
+/* TOP */
+.pr2-top{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+  padding: 18px 22px;
+}
+
+.pr2-photo{
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  flex: 0 0 auto;
+}
+
+.pr2-titleWrap { flex: 1; }
+
+.pr2-title {
+  margin: 0;
+  font-size: 20pt;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.pr2-divider,
+.pr2-divider--thin {
+  height: 2px;                  /* identike */
+  background: var(--rule);
+  margin: 7mm 0 6mm;
+}
+
+/* section titles */
+.pr2-secTitle {
+  margin: 0 0 4mm 0;
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+/* WORK rows (keep original) */
+.pr2-row {
+  display: grid;
+  grid-template-columns: 28mm 1fr;
+  column-gap: 10mm;
+  margin-bottom: 6mm;
+}
+
+.pr2-leftDate {
+  font-size: 9pt;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.pr2-main { min-width: 0; }
+
+.pr2-roleLine {
+  font-size: 10pt;
+  line-height: 1.2;
+}
+
+.pr2-role { font-weight: 700; }
+
+.pr2-company {
+  font-weight: 400;
+  color: #111827;
+}
+
+.pr2-subtle {
+  margin-top: 1mm;
+  font-size: 9pt;
+  color: #374151;
+  font-style: italic;
+}
+
+.pr2-text {
+  margin-top: 2mm;
+  font-size: 9.5pt;
+  line-height: 1.35;
+}
+
+/* bullets */
+.pr2-bullets {
+  margin: 2.5mm 0 0 0;
+  padding-left: 4mm;
+  font-size: 9.5pt;
+}
+
+/* =========================
+   3-column alignment row
+   LEFT | MID | RIGHT
+   We will align:
+   - Personal values (RIGHT)
+   - Education dates (RIGHT)
+   - Skills dots (RIGHT)
+   ========================= */
+
+.pr2-row3{
+  display: grid;
+  grid-template-columns: 1fr 10mm 58mm; /* LEFT content | spacer | RIGHT column */
+  column-gap: 10mm;
+  align-items: start;
+  margin-bottom: 3.5mm;
+}
+
+/* Personal left labels */
+.pr2-leftLabel{
+  font-size: 9.5pt;
+  color: #111827;
+  text-align: left;
+}
+
+/* Right column for personal values */
+.pr2-rightCol{
+  font-size: 9.5pt;
+  color: #111827;
+  text-align: left;
+}
+
+/* Education */
+.pr2-eduLeft{
+  text-align: left;
+}
+
+/* Right date column (THIS is the alignment anchor) */
+.pr2-rightDate{
+  font-size: 9pt;
+  color: #111827;
+  white-space: nowrap;
+  text-align: left;
+}
+
+/* Skills */
+.pr2-skillLeft{
+  font-size: 9.5pt;
+  line-height: 1.35;
+  font-weight: 400;
+  color: #111827;
+  text-align: left;
+}
+
+.pr2-rightDots{
+  display: flex;
+  justify-content: flex-start; /* dots begin at same right column start */
+}
+
+/* dots */
+.pr2-skillDots{
+  display: flex;
+  gap: 2.2mm;
+}
+
+.pr2-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.pr2-dotOn {
+  background: var(--accent);
+}
+/* A wrapper so this section doesn't get weird inherited grid behavior */
+.pr2-sec {
+  display: block;
+}
+
+/* Keep title + first rows together */
+.pr2-keepWithNext {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.pr2-keepTogether {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Interests: bullet sits NEXT to text */
+.pr2-interestGrid {
+  display: grid;
+  row-gap: 3mm;
+  margin-top: 2mm;
+}
+
+.pr2-interestRow {
+  display: grid;
+  grid-template-columns: 4mm 1fr;  /* dot column + text column */
+  column-gap: 4mm;
+  align-items: center;
+}
+
+.pr2-interestDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--accent);
+  justify-self: start;
+}
+
+.pr2-interestText {
+  font-size: 9.5pt;
+  line-height: 1.35;
+  text-align: left;
+}
+/* WORK uses the SAME 3-column system as PERSONAL (so right side aligns with email) */
+.pr2-row3--work{
+  grid-template-columns: 1fr 10mm 58mm; /* SAME as pr2-row3 */
+  column-gap: 10mm;
+  align-items: start;
+  margin-bottom: 6mm;
+}
+
+/* make sure date sits at the FAR LEFT */
+.pr2-leftDate--work{
+  justify-self: start;
+  text-align: left;
+}
+
+/* right work column behaves normally */
+.pr2-workRight{
+  min-width: 0;
+}
+/* Fine-tune WORK: pull content slightly left to align with email */
+.pr2-row3--work .pr2-workRight{
+  margin-left: -20mm;
+}
+.pr2-workSummary{
+  grid-column: 1 / -1;     /* span ALL columns */
+  margin-top: 2mm;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  text-align: left;
+}
+.pr2-objectiveText{
+  font-size: 9.5pt;
+  line-height: 1.35;
+  text-align: left;
+}
+ .pr2-secTitle {
+    font-size: 10pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.6px !important;
+    color: #111111 !important;
+    text-transform: uppercase !important;
+  }
+    h1, h2, h3 {
+    font-size: inherit;
+  }
+
+

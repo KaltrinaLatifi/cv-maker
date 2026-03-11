@@ -1,0 +1,321 @@
+.st-page {
+  --left: #323843;   /* Stanford ribbon color */
+  --muted: #6b7280;
+  color: #111827;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Layout */
+.st-layout {
+  display: grid;
+  grid-template-columns: 65mm 1fr;   /* ✅ match Harvard ribbon width */
+  min-height: 100%;
+}
+
+/* LEFT SIDEBAR */
+.st-left {
+  background: var(--left);
+  color: #fff;
+  position: relative;
+  padding-top: 16mm; /* print-safe */
+}
+
+.st-photo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10mm;
+}
+
+.st-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.st-photo--empty {
+  background: rgba(255,255,255,0.18);
+}
+
+.st-left-body {
+  padding: 0 8mm 10mm;
+  font-size: 9pt;
+}
+
+.st-side-section {
+  margin-bottom: 10mm;
+}
+
+.st-side-title {
+  margin: 0 0 4mm 0;
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #ffffff !important; /* ✅ keep sidebar titles white */
+}
+
+/* Contact list */
+.st-side-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.st-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 4mm;
+  margin-bottom: 3.5mm;
+  text-align: left;
+}
+
+.st-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.st-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: #ffffff;
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.st-contact-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.st-contact-label {
+  font-weight: 600;
+  font-size: 9pt;
+  color: #ffffff;
+}
+
+.st-contact-value {
+  font-size: 8.5pt;
+  color: rgba(255, 255, 255, 0.85);
+  word-break: break-word;
+}
+
+/* Interests */
+.st-interests-list li {
+  display: flex;
+  gap: 3mm;
+  align-items: center;
+  margin-bottom: 2.5mm;
+}
+
+.st-interest-dot {
+  width: 3px;
+  height: 3px;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.st-interest-text {
+  font-size: 9pt;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* RIGHT MAIN */
+.st-main {
+  padding: 14mm 18mm 14mm 9mm;  
+  background: #ffffff;
+}
+
+.st-main h2,
+.st-main .section-title,
+.st-main .st-secTitle {
+  color: #111827 !important;
+}
+
+.st-header {
+  margin-bottom: 1mm;
+}
+
+.st-name {
+  margin: 0;
+  font-size: 20pt;
+}
+
+.st-top-rule {
+  margin-top: 2mm;
+  height: 2px;
+  background: var(--border);
+}
+.st-sec {
+  margin: 0 0 4mm 0;
+}
+.st-secTitle {
+  margin: 0 !important;
+   padding: 0 !important;
+   font-size: 11pt;
+   font-weight: 700;
+   letter-spacing: 0 !important;  
+   text-transform: none;
+   color: #111827 !important; 
+}
+
+/* Items */
+.st-item {
+  margin-bottom: 5mm;
+}
+
+.st-item-head {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+}
+
+.st-role {
+  font-weight: 600;
+}
+
+.st-company {
+  color: var(--muted);
+}
+
+.st-dates {
+  margin-left: auto;
+  font-size: 8.5pt;
+  color: var(--muted);
+  text-align: right;
+}
+
+.st-summary {
+  margin: 1.5mm 0 0 0;
+  font-size: 9.5pt;
+}
+
+/* Force all main content text to be left aligned */
+.st-main,
+.st-main * {
+  text-align: left;
+}
+
+/* summaries */
+.st-summary,
+.st-summary--left {
+  text-align: left !important;
+}
+
+.st-highlights {
+  margin: 2mm 0 0 4mm;
+  padding-left: 4mm;
+  font-size: 9pt;
+}
+
+/* Skills dots */
+.st-skills {
+  display: grid;
+  gap: 2mm;
+  font-size: 9pt;
+}
+
+.st-skill-row {
+  display: flex;
+  align-items: center;
+}
+
+.st-skill-name {
+  margin-right: auto;
+}
+
+.st-skill-dots {
+  display: flex;
+  gap: 2mm;
+}
+
+.st-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.st-dot-on {
+  background: var(--left);
+}
+
+/* Page sizing like Harvard */
+.st-page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* left-align any Section divider lines */
+.st-main .section-rule,
+.st-main .section-bar,
+.st-main .section-divider,
+.st-main .section-line {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+/* Print reset (same as Harvard) */
+@media print {
+  @page { size: A4; margin: 0; }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  body { display: block !important; }
+
+  .st-page {
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .st-left,
+  .st-icon svg {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+ 
+  .st-page h2,
+  .st-page .section-title,
+  .st-page .st-secTitle,
+  .st-left .st-side-title {
+    font-size: 11pt !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: none !important;
+  }
+
+
+  .st-main h2,
+  .st-main .section-title,
+  .st-main .st-secTitle {
+    color: #111827 !important;
+  }
+
+  .st-left .st-side-title {
+    color: #ffffff !important;
+  }
+
+  .st-page h1,
+  .st-page .st-name {
+    font-size: 20pt !important;
+  }
+    .st-secTitle {
+    color: #111827 !important;
+    letter-spacing: 0 !important;
+  }
+}

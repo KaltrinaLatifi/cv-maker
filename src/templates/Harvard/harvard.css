@@ -1,0 +1,356 @@
+/* src/templates/Harvard/harvard.css */
+
+.hv-page {
+  --accent: #315a8a;
+  --rail: #f2f3f7;
+  --border: #dde0e6;
+  --muted: #6b7280;
+
+  color: #111827;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  width: 210mm;
+  min-height: unset;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* Layout */
+.hv-layout {
+  display: grid;
+  grid-template-columns: 65mm 1fr;
+  min-height: 297mm;
+}
+
+/* LEFT SIDEBAR */
+.hv-left {
+  background: var(--accent);
+  color: #fff;
+  position: relative;
+  padding-top: 16mm;
+}
+
+.hv-photo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10mm;
+}
+
+.hv-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.hv-left-body {
+  padding: 0 8mm 10mm;
+  font-size: 9pt;
+}
+
+.hv-side-section {
+  margin-bottom: 10mm;
+}
+
+.hv-side-title {
+  margin: 0 0 4mm 0;
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Contact list */
+.hv-side-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hv-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 4mm;
+  margin-bottom: 3.5mm;
+  text-align: left;
+}
+
+.hv-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.hv-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: #ffffff;
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.hv-contact-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.hv-contact-label {
+  font-weight: 600;
+  font-size: 9pt;
+  color: #ffffff;
+}
+
+.hv-contact-value {
+  font-size: 8.5pt;
+  color: rgba(255, 255, 255, 0.85);
+  word-break: break-word;
+}
+
+/* Interests */
+.hv-interests-list li {
+  display: flex;
+  gap: 3mm;
+  align-items: center;
+  margin-bottom: 2.5mm;
+}
+
+.hv-interest-dot {
+  width: 3px;
+  height: 3px;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.hv-interest-text {
+  font-size: 9pt;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* RIGHT MAIN */
+.hv-main {
+  padding: 14mm 18mm 14mm 9mm;
+  background: #ffffff;
+}
+
+.hv-header {
+  margin-bottom: 10mm;
+}
+
+.hv-name {
+  margin: 0;
+  font-size: 20pt;
+}
+
+.hv-top-rule {
+  margin-top: 5mm;
+  height: 2px;
+  background: var(--border); 
+}
+
+/* Items */
+.hv-item {
+  margin-bottom: 5mm;
+}
+
+.hv-item-head {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+}
+
+.hv-role {
+  font-weight: 600;
+}
+
+.hv-company {
+  color: var(--muted);
+}
+
+.hv-dates {
+  margin-left: auto;
+  font-size: 8.5pt;
+  color: var(--muted);
+}
+
+.hv-summary {
+  margin: 1.5mm 0 0 0;
+  font-size: 9.5pt;
+}
+
+.hv-highlights {
+  margin: 2mm 0 0 4mm;
+  padding-left: 4mm;
+  font-size: 9pt;
+}
+
+/* Skills dots */
+.hv-skills {
+  display: grid;
+  gap: 2mm;
+  font-size: 9pt;
+}
+
+.hv-skill-row {
+  display: flex;
+  align-items: center;
+}
+
+.hv-skill-name {
+  margin-right: auto;
+}
+
+.hv-skill-dots {
+  display: flex;
+  gap: 2mm;
+}
+
+.hv-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.hv-dot-on {
+  background: var(--accent);  
+}
+
+/* Timeline wrapper for sections */
+.hv-tl {
+  display: grid;
+  grid-template-columns: 22mm 1fr;
+  column-gap: 6mm;
+  align-items: start;
+}
+
+/* Left column: icon + vertical line */
+.hv-tl-left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Circle icon */
+.hv-tl-icon {
+  width: 11mm;
+  height: 11mm;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  margin-top: 1mm;
+}
+
+/* icon svg */
+.hv-tl-icon svg {
+  width: 5.5mm;
+  height: 5.5mm;
+  stroke: #111827;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* vertical line */
+.hv-tl-line {
+  flex: 1;
+  width: 1px;
+  background: #d1d5db;
+  margin-top: 2mm;
+  margin-bottom: 2mm;
+}
+
+/* Stop the line at the last section */
+.hv-tl--last .hv-tl-line {
+  display: none;
+}
+.hv-main h2,
+.hv-main h3,
+.hv-main .section-title {
+  color: #111111 !important;
+}
+
+/* Objective explicitly left */
+.hv-summary--objective {
+  text-align: left;
+}
+.hv-left .hv-side-title{
+  color: #ffffff !important;      /* keep sidebar title white */
+  font-size: 9pt !important;      /* keep small */
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+  margin: 0 0 4mm 0 !important;
+}
+
+/* Print */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .hv-left,
+  .hv-icon svg {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+.hv-name {
+    font-size: 20pt !important;
+    line-height: 1.15 !important;
+  }
+
+  .hv-main h2,
+  .hv-main h3,
+  .hv-main .section-title {
+    font-size: 11pt !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #111111 !important;
+  }
+}
+  .hv-left .hv-side-title{
+    color: #ffffff !important;
+    font-size: 9pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    line-height: 1.2 !important;
+    margin: 0 0 4mm 0 !important;
+  }
+.hv-tl-right,
+.hv-tl-right * {
+  text-align: left !important;
+}
+
+.hv-tl-right .hv-summary,
+.hv-tl-right p,
+.hv-tl-right .hv-item,
+.hv-tl-right article {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* if some wrapper is centering itself */
+.hv-tl-right > * {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+

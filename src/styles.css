@@ -1,0 +1,800 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*REMOVE SCROLL ON LOGIN & REGISTER*/
+
+
+
+body:has(.login-container){
+  overflow: hidden;
+}
+
+body:has(.register-container){
+  padding-top: 0;
+  overflow: hidden;
+
+  /* REAL 50/50 diagonal across the whole screen */
+  background: linear-gradient(
+    to bottom right,
+    var(--brand-blue) 0%,
+    var(--brand-blue) 50%,
+    #ffffff 50%,
+    #ffffff 100%
+  ) !important;
+}
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+  
+  overflow-x: hidden;
+}
+
+body{
+  padding-top: 0;          /* admin/dashboard should not be pushed down */
+  overflow-x: hidden;
+}
+
+/* only public pages get the header offset */
+body.is-public{
+  padding-top: var(--header-offset, 0px);
+}
+
+
+/*.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}*/
+
+h2, h3 {
+  color: #007bff;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+textarea.form-control,
+input.form-control {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 14px 16px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  background-color: #fefefe;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-control::placeholder {
+  font-style: italic;
+  color: #999;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  box-shadow: 0 4px 12px rgba(0, 91, 187, 0.2);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/*.d-flex {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}*/
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/*.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.col-md-6 {
+  width: 50%;
+  padding: 0 10px;
+}
+
+.col-md-12 {
+  width: 100%;
+  padding: 0 10px;
+}*/
+.cm-modal-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index: 9999;
+  padding: 18px;
+}
+.cm-modal{
+  width: 100%;
+  background:#fff;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  overflow:hidden;
+}
+.cm-modal-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.cm-modal-title{ font-weight:700; color:#111827; }
+.cm-modal-x{
+  border: 1px solid #e5e7eb;
+  background:#fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor:pointer;
+}
+.cm-modal-body{ padding: 16px; }
+
+/* =========================
+   GLOBAL THEME OVERRIDES
+   ========================= */
+:root{
+  --brand-blue: #1f6fff;     /* main blue */
+  --brand-blue-dark: #1558d6;
+  --header-height: 80px;     /* change if your fixed header is taller/shorter */
+}
+
+
+.login-container,
+.register-container{
+  height: 100vh;                  /* full screen */
+  padding-top: var(--header-height); /* pushes content below fixed header */
+  padding-bottom: 24px;
+  box-sizing: border-box;
+}
+
+/* =========================
+   LOGIN / REGISTER (blue + white diagonal background)
+   ========================= */
+.login-container{
+  width: 100%;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* space under fixed header */
+
+
+  /* true diagonal across the entire container */
+  background: linear-gradient(
+    135deg,
+    var(--brand-blue-dark) 0%,
+    var(--brand-blue-dark) 50%,
+    #ffffff 50%,
+    #ffffff 100%
+  );
+
+  padding: 24px 16px;
+}
+
+
+
+.login-card{
+  width: min(560px, 92vw);
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.12);
+  padding: 34px 34px 26px;
+  position: relative;
+  z-index: 2;
+}
+
+body.is-public {
+  padding-top: var(--header-offset, 0px);
+  overflow-x: hidden;
+}
+
+/* admin pages: no forced padding */
+body.is-admin {
+  padding-top: 0 !important;
+}
+
+
+.login-title{
+  color: var(--brand-blue);
+}
+
+.login-button{
+  width: 100%;
+  background: var(--brand-blue);
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-weight: 700;
+}
+
+.login-button:hover{
+  background: var(--brand-blue-dark);
+}
+
+/* =========================
+   CREATE CV PAGES (step header + icons + buttons -> blue)
+   ========================= */
+.step-header{
+  background: var(--brand-blue) !important;
+  color: #fff;
+  padding: 56px 16px;
+  text-align: center;
+}
+
+.step-header h2{
+  color: #fff !important;
+}
+
+.step-progress .icon{
+  /* this fixes the "purple icon circle" look */
+  background: rgba(255,255,255,.22) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.step-progress .label{
+  color: rgba(255,255,255,.92) !important;
+}
+
+.step-progress .line,
+.step-progress .active-line{
+  background: rgba(255,255,255,.55) !important;
+}
+
+/* Buttons in the CV steps */
+.step-btn.next,
+.step-btn.prev,
+.btn-add{
+  background: var(--brand-blue) !important;
+  border-color: var(--brand-blue) !important;
+  color: #fff !important;
+}
+
+.step-btn.next:hover,
+.step-btn.prev:hover,
+.btn-add:hover{
+  background: var(--brand-blue-dark) !important;
+  border-color: var(--brand-blue-dark) !important;
+}
+
+/* Remove extra vertical pushing that causes scrollbar after fixed header */
+.step-header + .container{
+  margin-top: 24px !important;
+}
+
+.step-header + .container.mt-5{
+  margin-top: 24px !important;
+}
+
+/* ===== Fixed header spacing for normal pages ===== */
+:root{
+  --brand-blue: #1f6fff;
+  --brand-blue-dark: #1558d6;
+  --header-height: 80px; /* adjust if needed */
+}
+
+/* default: all pages get spacing for the fixed header */
+
+
+/* BUT: login/register should NOT get that spacing + should have no scroll */
+body:has(.login-container),
+body:has(.register-container){
+  padding-top: 0;
+  overflow: hidden;
+}
+
+/* =========================================================
+   AUTH PAGES (LOGIN / REGISTER) - FINAL FIX (KEEP AT END)
+   ========================================================= */
+
+:root{
+  --brand-blue: #1f6fff;
+  --brand-blue-dark: #1558d6;
+  --header-height: 80px; /* nese navbar-i yt eshte ma i nalte/ulte, ndrysho ketu */
+}
+
+/* normal pages keep header spacing (nese e perdor navbar fixed) */
+
+
+/* auth pages: NO body padding, NO page scroll */
+body:has(.auth-container){
+  padding-top: 0 !important;
+  overflow: hidden !important;
+  background: #fff;
+}
+
+/* the full screen background + centering */
+.auth-container{
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+
+  /* push content below fixed header */
+  padding-top: calc(var(--header-height) + 72px);
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* TRUE 50/50 diagonal */
+  background: linear-gradient(
+    135deg,
+    var(--brand-blue) 0%,
+    var(--brand-blue) 50%,
+    #ffffff 50%,
+    #ffffff 100%
+  );
+}
+
+/* card */
+.auth-container .login-card{
+  width: min(560px, 92vw);
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.12);
+  padding: 34px 34px 26px;
+
+  /* prevent page scroll; if ever too tall, scroll only inside card */
+  max-height: calc(100vh - var(--header-height) - 48px);
+  overflow: auto;
+}
+
+/* headings + buttons */
+.auth-container .login-title{
+  color: var(--brand-blue);
+}
+
+.auth-container .login-button{
+  width: 100%;
+  background: var(--brand-blue);
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-weight: 700;
+}
+
+.auth-container .login-button:hover{
+  background: var(--brand-blue-dark);
+}
+/* =========================
+   LOGIN MOBILE FIX
+   ========================= */
+
+@media (max-width: 768px) {
+  .auth-container {
+    padding-top: calc(var(--header-height) + 24px);
+    background: var(--brand-blue); /* remove diagonal on mobile */
+  }
+
+  .auth-container .login-card {
+    max-height: none;
+    padding: 24px 20px;
+  }
+}
+
+/* =========================
+   FOOTER (NAVY BLUE + WHITE TEXT)
+   ========================= */
+
+#footer.footer{
+  background: #0b1f3a;  /* navy */
+  color: #ffffff;
+  padding: 60px 0 30px;
+}
+
+/* Remove the white boxed "container" style ONLY inside footer */
+#footer .container{
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin: 0 auto !important;
+  padding: 0 16px !important;
+}
+
+/* Top spacing */
+#footer .footer-top{
+  padding-bottom: 30px;
+}
+
+/* Titles */
+#footer h4,
+#footer .sitename{
+  color: #ffffff !important;
+}
+
+/* Paragraphs + small text */
+#footer p,
+#footer .footer-contact,
+#footer .credits{
+  color: rgba(255,255,255,0.85);
+}
+
+/* Links */
+#footer a{
+  color: #ffffff !important;
+  text-decoration: none;
+}
+#footer a:hover{
+  color: var(--brand-blue, #1f6fff) !important;
+  text-decoration: underline;
+}
+
+/* Lists */
+#footer .footer-links ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#footer .footer-links li{
+  margin: 10px 0;
+}
+
+/* Social icons */
+#footer .social-links a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #ffffff !important;
+  margin-right: 10px;
+  transition: 0.2s ease;
+}
+#footer .social-links a:hover{
+  border-color: var(--brand-blue, #1f6fff);
+  color: var(--brand-blue, #1f6fff) !important;
+}
+
+/* Copyright line */
+#footer .copyright{
+  margin-top: 30px !important;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.85);
+}
+
+/* 1) Fshije titullin blu (h2) në section-title */
+.section-title h2 {
+  display: none !important;
+}
+
+/* 2) Merre "faded" title (span) dhe boje normal (me ngjyrë, jo faded) */
+.section-title span {
+  position: static !important;   /* hiqe absolute overlay */
+  display: block !important;
+  transform: none !important;
+  opacity: 1 !important;
+  color: #3e405f !important;     /* blue - ndroje nese don */
+  font-size: 35px !important;    /* rrite/ul sipas qejfit */
+  font-weight: 700 !important;
+  letter-spacing: 1px;
+  text-align: center !important;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+/* 3) Teksti poshtë titullit (paragrafi) me u qit në qendër */
+.section-title p {
+  text-align: center !important;
+}
+
+.content h3 {
+  color: #3e405f;
+  font-weight: 700;
+}
+
+.btn-get-started {
+  display: block;
+  margin: 24px auto 0 auto;
+}
+
+#about .content {
+  margin-top: 90px;
+}
+
+/* Titujt: Address, Call Us, Email Us */
+.info-wrap .info-item h3 {
+  color: #3e405f; /* navy blue */
+  font-weight: 700;
+}
+
+/* Ikonat (location, phone, email) */
+.info-wrap .info-item i {
+  color: #086fff;
+}
+
+/* Rrethi i ikonës (background) – opsional */
+.info-wrap .info-item i {
+  background: rgba(11, 31, 59, 0.08); /* navy very light */
+}
+/* Toast message inside form */
+.php-email-form .toast {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  animation: toastIn 0.25s ease;
+}
+
+.php-email-form .toast-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Success */
+.php-email-form .toast-success {
+  background: #e9f8ef;
+  color: #0f5132;
+  border: 1px solid #b7ebc6;
+}
+
+.php-email-form .toast-success .toast-icon {
+  background: #0f5132;
+  color: #ffffff;
+}
+
+/* Error */
+.php-email-form .toast-error {
+  background: #ffecec;
+  color: #b00020;
+  border: 1px solid #ffc7c7;
+}
+
+.php-email-form .toast-error .toast-icon {
+  background: #b00020;
+  color: #ffffff;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 1) Nëse ikona është font icon (me ::before) */
+.step.active .icon::before {
+  color: #fff !important;
+}
+
+ /*2) Nëse brenda ikonës ka <i> ose <svg> */
+.step.active .icon,
+.step.active .icon i,
+.step.active .icon svg {
+  color: #fff !important;
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+
+/* 3) Nëse ikona është brenda step-progress */
+.step-progress .step.active .icon::before,
+.step-progress .step.active .icon,
+.step-progress .step.active .icon i,
+.step-progress .step.active .icon svg {
+  color: #fff !important;
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+
+.step.active .icon i {
+  color: #ffffff !important;
+  font-size: 18px;/* rregullo sipas qejfit */
+}
+/*Personal Details title */
+.personal-title {
+  color: #3e405f;    /*   navy blue */
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+ /*Ikona */
+.personal-title i {
+  color: #3e405f;
+  font-size: 30px;
+}
+
+/* Resume Objective ONLY */
+.resume-objective-title {
+  color: #3e405f;       /* navy */
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resume-objective-title i {
+  color: #3e405f;       /* navy icon */
+  font-size: 30px;
+}
+
+.section-box h3 {
+  color: #3e405f;
+  font-weight: 700;
+}
+/* Add another buttons – friendly & soft */
+.btn.btn-add {
+  background-color: #f2f3fc !important;  /* light blue-gray */
+  color: #0b1f3b !important;             /* navy */
+  border: 1px solid #c7d4e6 !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  box-shadow: none !important;
+}
+
+/* Hover */
+.btn.btn-add:hover {
+  background-color: #e8eff9 !important;
+  border-color: #0b1f3b !important;
+}
+
+
+/* CV Templates page title */
+.cv-template-page h2 {
+  color: #0b2a4a;        /* navy blue */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  text-align: center !important;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* =========================
+   HERO RESPONSIVE
+   ========================= */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 40px 16px;
+  }
+
+  .hero img {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .btn-get-started {
+    width: 100%;
+    max-width: 260px;
+    margin: 20px auto 0;
+  }
+}
+/* =========================
+   GLOBAL RESPONSIVE FIXES
+   ========================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container,
+.container-fluid {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
+
+/* mobile text scaling */
+@media (max-width: 768px) {
+  h1 { font-size: 32px !important; }
+  h2 { font-size: 26px !important; }
+  h3 { font-size: 22px !important; }
+}
+
+
+
